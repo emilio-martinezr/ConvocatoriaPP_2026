@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulario con Firebase</title>
+  <script type="module">
+    // Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // Tu configuración de Firebase (¡la que me diste!)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUnde2rpORUWQI-6UX1_KE2pUIVKLRlfk",
+      authDomain: "formulariof1-6dc2b.firebaseapp.com",
+      projectId: "formulariof1-6dc2b",
+      storageBucket: "formulariof1-6dc2b.firebasestorage.app",
+      messagingSenderId: "24034176917",
+      appId: "1:24034176917:web:782e8e12c29c15e149509c"
+    };
+
+    // Inicializar Firebase y Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Función para enviar el formulario
+    window.enviarFormulario = async () => {
+      const nombre = document.getElementById("nombre").value;
+      const correo = document.getElementById("correo").value;
+
+      if (!nombre || !correo) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "formularios"), {
+          nombre: nombre,
+          correo: correo,
+          fecha: new Date()
+        });
+        alert("✅ Datos enviados correctamente.");
+        document.getElementById("formulario").reset();
+      } catch (e) {
+        alert("❌ Error al enviar: " + e);
+        console.error(e);
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Formulario de prueba</h1>
+  <form id="formulario" onsubmit="event.preventDefault(); enviarFormulario();">
+    <label>Nombre:<br><input type="text" id="nombre" /></label><br><br>
+    <label>Correo:<br><input type="email" id="correo" /></label><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>
