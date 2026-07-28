@@ -1,58 +1,451 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Formulario con Firebase</title>
-  <script type="module">
-    // Firebase SDKs
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    // Tu configuración de Firebase (¡la que me diste!)
-    const firebaseConfig = {
-      apiKey: "AIzaSyCUnde2rpORUWQI-6UX1_KE2pUIVKLRlfk",
-      authDomain: "formulariof1-6dc2b.firebaseapp.com",
-      projectId: "formulariof1-6dc2b",
-      storageBucket: "formulariof1-6dc2b.firebasestorage.app",
-      messagingSenderId: "24034176917",
-      appId: "1:24034176917:web:782e8e12c29c15e149509c"
-    };
+    <title>Convocatoria 2026 | Organizaciones Sociales</title>
 
-    // Inicializar Firebase y Firestore
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    <meta name="description"
+        content="Proceso para la Promoción, Cualificación y Consolidación de las Organizaciones Sociales, Redes, Mesas y Colectivos del Distrito de Medellín.">
 
-    // Función para enviar el formulario
-    window.enviarFormulario = async () => {
-      const nombre = document.getElementById("nombre").value;
-      const correo = document.getElementById("correo").value;
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-      if (!nombre || !correo) {
-        alert("Por favor completa todos los campos.");
-        return;
-      }
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-      try {
-        await addDoc(collection(db, "formularios"), {
-          nombre: nombre,
-          correo: correo,
-          fecha: new Date()
-        });
-        alert("✅ Datos enviados correctamente.");
-        document.getElementById("formulario").reset();
-      } catch (e) {
-        alert("❌ Error al enviar: " + e);
-        console.error(e);
-      }
-    };
-  </script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-  <h1>Formulario de prueba</h1>
-  <form id="formulario" onsubmit="event.preventDefault(); enviarFormulario();">
-    <label>Nombre:<br><input type="text" id="nombre" /></label><br><br>
-    <label>Correo:<br><input type="email" id="correo" /></label><br><br>
-    <button type="submit">Enviar</button>
-  </form>
+
+    <!--=========================
+        NAVBAR
+    ==========================-->
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="#">
+                Convocatoria 2026
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#objetivo">Objetivo</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documentos">Documentos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">Preguntas</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!--=========================
+        HERO
+    ==========================-->
+
+    <header id="inicio" class="hero">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                                <div class="col-lg-6 text-center">
+
+                    <img src="img/imagen.png" class="img-fluid hero-banner" alt="Banner">
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <span class="badge bg-warning text-dark mb-3">
+                        Convocatoria Abierta
+                    </span>
+
+                    <h1>
+
+                        Proceso para la Promoción,
+                        Cualificación y Consolidación
+                        de las Organizaciones Sociales
+
+                    </h1>
+
+                    <p>
+
+                        Secretaría de Participación Ciudadana
+
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#documentos" class="btn btn-light btn-lg">
+
+                            Descargar Documentos
+
+                        </a>
+
+                        <a href="https://script.google.com/macros/s/AKfycbz_kYkGP5oT2k6GY-1Q5KKjUclM7W8kjj5nMufsVv1wHGAXJzg6wgGNTRTh9A54guMR/exec" class="btn btn-warning btn-lg">
+
+                            Iniciar Inscripción
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!--=========================
+        OBJETIVO
+    ==========================-->
+
+    <section id="objetivo">
+
+        <div class="container">
+
+            <h2>Objetivo</h2>
+
+            <p>
+
+                Promover, fortalecer y consolidar las organizaciones sociales del territorio mediante procesos de
+                acompañamiento, cualificación y participación ciudadana.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!--=========================
+        QUIÉNES PUEDEN PARTICIPAR
+    ==========================-->
+
+    <section id="participantes">
+
+        <div class="container">
+
+            <h2>¿Quiénes pueden participar?</h2>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-people-fill"></i>
+
+                            <h5>Organizaciones Sociales</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-diagram-3-fill"></i>
+
+                            <h5>Redes</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-building"></i>
+
+                            <h5>Mesas y Colectivos</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--=========================
+        DOCUMENTOS
+    ==========================-->
+
+    <section id="documentos">
+
+        <div class="container">
+
+            <h2>Documentos</h2>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h4>Documento de Intencionalidad</h4>
+
+                            <a href="img/archivos/Documento de Intensionalidad PP2025-2026.docx">Descargar</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h4>Carta de Compromiso</h4>
+
+                            <a href="img/archivos/CARTA DE COMPROMISO.docx">Descargar</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--=========================
+        FAQ
+    ==========================-->
+
+    <section id="faq">
+
+        <div class="container">
+
+            <h2>Preguntas Frecuentes</h2>
+
+            <div class="accordion" id="acordeon">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">
+
+                            ¿Quién puede participar?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="f1" class="accordion-collapse collapse show">
+
+                        <div class="accordion-body">
+
+                            Podrán participar organizaciones sociales, redes, mesas y colectivos pertenecientes a las
+                            comunas habilitadas para esta convocatoria.
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">
+
+                            ¿Qué documentos debo presentar?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="f1" class="accordion-collapse collapse show">
+
+                        <div class="accordion-body">
+
+
+                            Debe adjuntar el Documento de Intencionalidad y la Carta de Compromiso diligenciados y
+                            firmados en formato PDF.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">
+
+                            ¿Los documentos deben ir en PDF?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="f1" class="accordion-collapse collapse show">
+
+                        <div class="accordion-body">
+
+                            Sí. Todos los documentos que se carguen en el formulario deben estar en formato PDF.
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1">
+
+                            ¿Puedo modificar la inscripción después de enviarla?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="f1" class="accordion-collapse collapse show">
+
+                        <div class="accordion-body">
+
+                            Una vez enviada la inscripción no podrá ser modificada. Revise cuidadosamente toda la
+                            información antes de enviarla.
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--=========================
+        CTA FINAL
+    ==========================-->
+
+    <section class="cta-final">
+
+        <div class="container text-center">
+
+            <h2>
+
+                ¿Listo para participar?
+
+            </h2>
+
+            <p>
+
+                Inicie ahora su proceso de inscripción.
+
+            </p>
+
+            <a href="https://script.google.com/macros/s/AKfycbz_kYkGP5oT2k6GY-1Q5KKjUclM7W8kjj5nMufsVv1wHGAXJzg6wgGNTRTh9A54guMR/exec" class="btn btn-warning btn-lg">
+
+                INICIAR INSCRIPCIÓN
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!--=========================
+        FOOTER
+    ==========================-->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Secretaría de Participación Ciudadana
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS -->
+    <script src="assets/js/app.js"></script>
+
 </body>
+
 </html>
